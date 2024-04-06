@@ -54,7 +54,13 @@ Properties
    +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`String<class_String>`                       | :ref:`custom_template/release<class_EditorExportPlatformAndroid_property_custom_template/release>`                                               |
    +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`gradle_build/android_source_template<class_EditorExportPlatformAndroid_property_gradle_build/android_source_template>`                     |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`gradle_build/compress_native_libraries<class_EditorExportPlatformAndroid_property_gradle_build/compress_native_libraries>`                 |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                             | :ref:`gradle_build/export_format<class_EditorExportPlatformAndroid_property_gradle_build/export_format>`                                         |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`gradle_build/gradle_build_directory<class_EditorExportPlatformAndroid_property_gradle_build/gradle_build_directory>`                       |
    +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`String<class_String>`                       | :ref:`gradle_build/min_sdk<class_EditorExportPlatformAndroid_property_gradle_build/min_sdk>`                                                     |
    +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -526,7 +532,9 @@ A list of additional command line arguments, exported project will receive when 
 
 :ref:`String<class_String>` **custom_template/debug**
 
-Path to the custom export template. If left empty, default template is used.
+Path to an APK file to use as a custom export template for debug exports. If left empty, default template is used.
+
+\ **Note:** This is only used if :ref:`gradle_build/use_gradle_build<class_EditorExportPlatformAndroid_property_gradle_build/use_gradle_build>` is disabled.
 
 .. rst-class:: classref-item-separator
 
@@ -538,7 +546,35 @@ Path to the custom export template. If left empty, default template is used.
 
 :ref:`String<class_String>` **custom_template/release**
 
-Path to the custom export template. If left empty, default template is used.
+Path to an APK file to use as a custom export template for release exports. If left empty, default template is used.
+
+\ **Note:** This is only used if :ref:`gradle_build/use_gradle_build<class_EditorExportPlatformAndroid_property_gradle_build/use_gradle_build>` is disabled.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_EditorExportPlatformAndroid_property_gradle_build/android_source_template:
+
+.. rst-class:: classref-property
+
+:ref:`String<class_String>` **gradle_build/android_source_template**
+
+Path to a ZIP file holding the source for the export template used in a Gradle build. If left empty, the default template is used.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_EditorExportPlatformAndroid_property_gradle_build/compress_native_libraries:
+
+.. rst-class:: classref-property
+
+:ref:`bool<class_bool>` **gradle_build/compress_native_libraries**
+
+If ``true``, native libraries are compressed when performing a Gradle build.
+
+\ **Note:** Although your binary may be smaller, your application may load slower because the native libraries are not loaded directly from the binary at runtime.
 
 .. rst-class:: classref-item-separator
 
@@ -551,6 +587,18 @@ Path to the custom export template. If left empty, default template is used.
 :ref:`int<class_int>` **gradle_build/export_format**
 
 Export format for Gradle build.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_EditorExportPlatformAndroid_property_gradle_build/gradle_build_directory:
+
+.. rst-class:: classref-property
+
+:ref:`String<class_String>` **gradle_build/gradle_build_directory**
+
+Path to the Gradle build directory. If left empty, then ``res://android`` will be used.
 
 .. rst-class:: classref-item-separator
 
@@ -1404,7 +1452,7 @@ Array of custom permission strings.
 
 :ref:`bool<class_bool>` **permissions/delete_cache_files**
 
-Deprecated.
+**Deprecated:** This property may be changed or removed in future versions.
 
 .. rst-class:: classref-item-separator
 
@@ -1548,7 +1596,7 @@ Allows an application to find out the space used by any package. See `GET_PACKAG
 
 :ref:`bool<class_bool>` **permissions/get_tasks**
 
-Deprecated in API level 21.
+**Deprecated:** Deprecated in API level 21.
 
 .. rst-class:: classref-item-separator
 
@@ -1824,9 +1872,9 @@ Allows applications to perform I/O operations over NFC. See `NFC <https://develo
 
 :ref:`bool<class_bool>` **permissions/persistent_activity**
 
-Allow an application to make its activities persistent.
+**Deprecated:** Deprecated in API level 15.
 
-Deprecated in API level 15.
+Allow an application to make its activities persistent.
 
 .. rst-class:: classref-item-separator
 
@@ -1838,9 +1886,9 @@ Deprecated in API level 15.
 
 :ref:`bool<class_bool>` **permissions/process_outgoing_calls**
 
-Allows an application to see the number being dialed during an outgoing call with the option to redirect the call to a different number or abort the call altogether. See `PROCESS_OUTGOING_CALLS <https://developer.android.com/reference/android/Manifest.permission#PROCESS_OUTGOING_CALLS>`__.
+**Deprecated:** Deprecated in API level 29.
 
-Deprecated in API level 29.
+Allows an application to see the number being dialed during an outgoing call with the option to redirect the call to a different number or abort the call altogether. See `PROCESS_OUTGOING_CALLS <https://developer.android.com/reference/android/Manifest.permission#PROCESS_OUTGOING_CALLS>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -1888,9 +1936,9 @@ Allows an application to read the user's contacts data. See `READ_CONTACTS <http
 
 :ref:`bool<class_bool>` **permissions/read_external_storage**
 
-Allows an application to read from external storage. See `READ_EXTERNAL_STORAGE <https://developer.android.com/reference/android/Manifest.permission#READ_EXTERNAL_STORAGE>`__.
+**Deprecated:** Deprecated in API level 33.
 
-Deprecated in API level 33.
+Allows an application to read from external storage. See `READ_EXTERNAL_STORAGE <https://developer.android.com/reference/android/Manifest.permission#READ_EXTERNAL_STORAGE>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -1926,7 +1974,7 @@ Allows an application to read (but not write) the user's browsing history and bo
 
 :ref:`bool<class_bool>` **permissions/read_input_state**
 
-Deprecated in API level 16.
+**Deprecated:** Deprecated in API level 16.
 
 .. rst-class:: classref-item-separator
 
@@ -2118,7 +2166,7 @@ Allows an application to change the Z-order of tasks. See `REORDER_TASKS <https:
 
 :ref:`bool<class_bool>` **permissions/restart_packages**
 
-Deprecated in API level 15.
+**Deprecated:** Deprecated in API level 15.
 
 .. rst-class:: classref-item-separator
 
@@ -2238,7 +2286,7 @@ Allows low-level access to setting the pointer speed.
 
 :ref:`bool<class_bool>` **permissions/set_preferred_applications**
 
-Deprecated in API level 15.
+**Deprecated:** Deprecated in API level 15.
 
 .. rst-class:: classref-item-separator
 
@@ -2346,7 +2394,7 @@ Allows an application to allow access the subscribed feeds ContentProvider.
 
 :ref:`bool<class_bool>` **permissions/subscribed_feeds_write**
 
-Deprecated.
+**Deprecated:** This property may be changed or removed in future versions.
 
 .. rst-class:: classref-item-separator
 
@@ -2382,7 +2430,7 @@ Allows using the device's IR transmitter, if available. See `TRANSMIT_IR <https:
 
 :ref:`bool<class_bool>` **permissions/uninstall_shortcut**
 
-Deprecated.
+**Deprecated:** This property may be changed or removed in future versions.
 
 .. rst-class:: classref-item-separator
 
@@ -2729,3 +2777,4 @@ Application version visible to the user. Falls back to :ref:`ProjectSettings.app
 .. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
 .. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
 .. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
+.. |void| replace:: :abbr:`void (No return value.)`
