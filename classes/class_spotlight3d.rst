@@ -34,7 +34,7 @@ Tutorials
 
 - :doc:`Faking global illumination <../tutorials/3d/global_illumination/faking_global_illumination>`
 
-- `Third Person Shooter Demo <https://godotengine.org/asset-library/asset/678>`__
+- `Third Person Shooter (TPS) Demo <https://godotengine.org/asset-library/asset/2710>`__
 
 .. rst-class:: classref-reftable-group
 
@@ -71,12 +71,12 @@ Property Descriptions
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **spot_angle** = ``45.0``
+:ref:`float<class_float>` **spot_angle** = ``45.0`` :ref:`🔗<class_SpotLight3D_property_spot_angle>`
 
 .. rst-class:: classref-property-setget
 
-- void **set_param** **(** :ref:`float<class_float>` value **)**
-- :ref:`float<class_float>` **get_param** **(** **)**
+- |void| **set_param**\ (\ value\: :ref:`float<class_float>`\ )
+- :ref:`float<class_float>` **get_param**\ (\ )
 
 The spotlight's angle in degrees.
 
@@ -90,12 +90,12 @@ The spotlight's angle in degrees.
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **spot_angle_attenuation** = ``1.0``
+:ref:`float<class_float>` **spot_angle_attenuation** = ``1.0`` :ref:`🔗<class_SpotLight3D_property_spot_angle_attenuation>`
 
 .. rst-class:: classref-property-setget
 
-- void **set_param** **(** :ref:`float<class_float>` value **)**
-- :ref:`float<class_float>` **get_param** **(** **)**
+- |void| **set_param**\ (\ value\: :ref:`float<class_float>`\ )
+- :ref:`float<class_float>` **get_param**\ (\ )
 
 The spotlight's *angular* attenuation curve. See also :ref:`spot_attenuation<class_SpotLight3D_property_spot_attenuation>`.
 
@@ -107,18 +107,18 @@ The spotlight's *angular* attenuation curve. See also :ref:`spot_attenuation<cla
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **spot_attenuation** = ``1.0``
+:ref:`float<class_float>` **spot_attenuation** = ``1.0`` :ref:`🔗<class_SpotLight3D_property_spot_attenuation>`
 
 .. rst-class:: classref-property-setget
 
-- void **set_param** **(** :ref:`float<class_float>` value **)**
-- :ref:`float<class_float>` **get_param** **(** **)**
+- |void| **set_param**\ (\ value\: :ref:`float<class_float>`\ )
+- :ref:`float<class_float>` **get_param**\ (\ )
 
 Controls the distance attenuation function for spotlights.
 
-A value of ``0.0`` smoothly attenuates light at the edge of the range. A value of ``1.0`` approaches a physical lighting model. A value of ``0.5`` approximates linear attenuation.
+A value of ``0.0`` will maintain a constant brightness through most of the range, but smoothly attenuate the light at the edge of the range. Use a value of ``2.0`` for physically accurate lights as it results in the proper inverse square attenutation.
 
-\ **Note:** Setting it to ``1.0`` may result in distant objects receiving minimal light, even within range. For example, with a range of ``4096``, an object at ``100`` units receives less than ``0.1`` energy.
+\ **Note:** Setting attenuation to ``2.0`` or higher may result in distant objects receiving minimal light, even within range. For example, with a range of ``4096``, an object at ``100`` units is attenuated by a factor of ``0.0001``. With a default brightness of ``1``, the light would not be visible at that distance.
 
 \ **Note:** Using negative or values higher than ``10.0`` may lead to unexpected results.
 
@@ -130,12 +130,12 @@ A value of ``0.0`` smoothly attenuates light at the edge of the range. A value o
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **spot_range** = ``5.0``
+:ref:`float<class_float>` **spot_range** = ``5.0`` :ref:`🔗<class_SpotLight3D_property_spot_range>`
 
 .. rst-class:: classref-property-setget
 
-- void **set_param** **(** :ref:`float<class_float>` value **)**
-- :ref:`float<class_float>` **get_param** **(** **)**
+- |void| **set_param**\ (\ value\: :ref:`float<class_float>`\ )
+- :ref:`float<class_float>` **get_param**\ (\ )
 
 The maximal range that can be reached by the spotlight. Note that the effectively lit area may appear to be smaller depending on the :ref:`spot_attenuation<class_SpotLight3D_property_spot_attenuation>` in use. No matter the :ref:`spot_attenuation<class_SpotLight3D_property_spot_attenuation>` in use, the light will never reach anything outside this range.
 
@@ -148,3 +148,4 @@ The maximal range that can be reached by the spotlight. Note that the effectivel
 .. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
 .. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
 .. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
+.. |void| replace:: :abbr:`void (No return value.)`
